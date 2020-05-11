@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+html, body, #root {
+    display: flex;;
+    flex-direction: column;
+    height: 100%;
+ }
+.headers {
+    display: flex;;
+    justify-content: space-between;
+    padding: 0.5em;
+    background-color: lightgoldenrodyellow;
+}
+.header {
+    cursor: pointer;
+    padding: 0.25em;
+    text-decoration: underline;
+}
+.clicked {
+    background-color: lightcoral;
+    color: white;
+    border-radius: 0.25em;
+}
+.links {
+    height: 100%;
+    padding: 1em;
+}
+
+ul {
+    padding: 0.25em 0px;
+}
