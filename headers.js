@@ -6,6 +6,9 @@ const HEADERS = {
   react: "React",
   angular: "Angular",
   architecture: "Architecture",
+  git: "Git",
+  design: "Design",
+  general: "General",
 };
 
 export default HEADERS;

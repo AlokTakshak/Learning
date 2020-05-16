@@ -5,10 +5,12 @@ html, body, #root {
     display: flex;;
     flex-direction: column;
     height: 100%;
+    font-style: italic;
  }
 .headers {
-    display: flex;;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 0.5em;
     background-color: lightgoldenrodyellow;
 }
@@ -16,11 +18,10 @@ html, body, #root {
     cursor: pointer;
     padding: 0.25em;
     text-decoration: underline;
+    margin: 0.25em 0px;
 }
 .clicked {
-    background-color: lightcoral;
-    color: white;
-    border-radius: 0.25em;
+    color: lightcoral;
 }
 .links {
     height: 100%;
