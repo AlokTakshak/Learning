@@ -1,13 +1,14 @@
-import  HEADERS from "./headers.js";
+import HEADERS from "./headers.js";
 import LINKS from "./links.js";
 
-(function Module(context, HEADERS, LINKS) {
-
+(function Module(global, context, HEADERS, LINKS) {
   class Render {
+    LEARN_RES_TARGET = "learn_res_target";
+
     /**
-     * @param {HTMLElement} rootEle
-     * @param {Object<string, string} Headers
-     * @param {Object<string, string[]>} Links
+     * @param {HTMLElement} rootEle root element where we want to attatch headers and content
+     * @param {Object<string, string} Headers an object containing headers
+     * @param {Object<string, string[]>} Links an Object have headers as key and  value as array of links
      */
     constructor(rootEle, Headers, Links) {
       this._rootEle = rootEle;
@@ -21,6 +22,9 @@ import LINKS from "./links.js";
 
     /**
      * @returns {HTMLElement}
+     * @param {string} tag name of tag which need to be created
+     * @param {string} id id for the tag to be created
+     * @param {Array<string> | undefined} classNames class to be added
      */
     _createElement(tag, id, classNames = undefined) {
       let ele = context.createElement(tag);
@@ -42,9 +46,12 @@ import LINKS from "./links.js";
             this.lastTarget.classList.remove("clicked");
           }
           this.lastTarget = target;
+          global.sessionStorage.setItem(
+            this.LEARN_RES_TARGET,
+            this.lastTarget.innerText
+          );
           target.classList.add("clicked");
           if (this._content.childElementCount === 0) {
-            console.log("targt", target.id, target.tagName);
             this._appendElementsOfHeader(
               this._content,
               this._links[target.innerText]
@@ -69,6 +76,12 @@ import LINKS from "./links.js";
       if (classNames && Array.isArray(classNames)) {
         ele.classList.add(...classNames);
       }
+      if (
+        global.sessionStorage.getItem(this.LEARN_RES_TARGET) === headerTitle
+      ) {
+        ele.classList.add("clicked");
+        this.lastTarget = ele;
+      }
       return ele;
     }
 
@@ -86,7 +99,7 @@ import LINKS from "./links.js";
     }
 
     /**
-     *
+     * creates links for corresponding taget and add them to content section
      * @param { HTMLElement } target
      * @param  {Array<{title, url}> } links
      */
@@ -102,6 +115,7 @@ import LINKS from "./links.js";
       target.appendChild(linksFragment);
     }
 
+    // renders the Headers Element inside the DOM
     renderHeaders() {
       let headerDocumentFragment = context.createDocumentFragment();
       let div = this._createElement("div", "headers", ["headers"]);
@@ -113,15 +127,22 @@ import LINKS from "./links.js";
       return headerDocumentFragment;
     }
 
+    // renders the elements based on headers and links file and add event handlers
     render() {
       this._addEventListner();
       this._rootEle.appendChild(this.renderHeaders());
       this._content = this._createElement("div", "content", ["links"]);
       this._rootEle.appendChild(this._content);
+      if (global.sessionStorage.getItem(this.LEARN_RES_TARGET)) {
+        this._appendElementsOfHeader(
+          this._content,
+          this._links[global.sessionStorage.getItem(this.LEARN_RES_TARGET)]
+        );
+      }
     }
   }
 
   const root = context.getElementById("root");
   const site = new Render(root, HEADERS, LINKS);
   site.render();
-})(document, HEADERS, LINKS);
+})(window, document, HEADERS, LINKS);
