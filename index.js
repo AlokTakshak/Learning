@@ -38,6 +38,17 @@ import LINKS from "./links.js";
     _addEventListner() {
       this._rootEle.addEventListener("click", (event) => {
         const { target } = event;
+        if (
+          target.classList.contains("responsive-header") &&
+          target.tagName === this._headerTag
+        ) {
+          const headers = context.getElementsByTagName(
+            this._headerTag.toLocaleLowerCase()
+          );
+          Object.keys(headers).forEach((key) => {
+            headers[key].classList.remove("responsive-header");
+          });
+        }
         if (target.tagName === this._headerTag && this._content) {
           if (
             this.lastTarget &&
@@ -65,6 +76,19 @@ import LINKS from "./links.js";
               this._links[target.innerText]
             );
           }
+        }
+        if (target.classList.contains("fa-bars")) {
+          console.log("clicked on menu");
+          const headers = context.getElementsByTagName(
+            this._headerTag.toLocaleLowerCase()
+          );
+          Object.keys(headers).forEach((key) => {
+            if (headers[key].classList.contains("responsive-header")) {
+              headers[key].classList.remove("responsive-header");
+            } else {
+              headers[key].classList.add("responsive-header");
+            }
+          });
         }
       });
     }
@@ -105,14 +129,28 @@ import LINKS from "./links.js";
      */
     _appendElementsOfHeader(target, links) {
       let linksFragment = context.createDocumentFragment();
-      let ul = this._createElement("ul", `${this.lastTarget.innerText}_links`);
-      links.forEach((link) => {
-        let li = this._createElement("ul", "link");
+      let ul = this._createElement("ol", `${this.lastTarget.innerText}_links`);
+      links.forEach((link, index) => {
+        let li = this._createElement(
+          "li",
+          "link",
+          index % 2 === 0 ? ["highlighted"] : ""
+        );
         li.appendChild(this._createLinkTag(link.title, link.url));
         ul.appendChild(li);
       });
       linksFragment.append(ul);
       target.appendChild(linksFragment);
+    }
+
+    /**
+     * @param {HTMLElement} ele
+     */
+    _attachMenu(ele) {
+      let i = this._createElement("i", "menu-icon", ["fa", "fa-bars"]);
+      let a = this._createElement("a", "menu", ["menu"]);
+      a.appendChild(i);
+      ele.appendChild(a);
     }
 
     // renders the Headers Element inside the DOM
@@ -123,6 +161,7 @@ import LINKS from "./links.js";
         const title = this._headers[key];
         div.appendChild(this._createHeaderElement(title, key, ["header"]));
       });
+      this._attachMenu(div);
       headerDocumentFragment.appendChild(div);
       return headerDocumentFragment;
     }
