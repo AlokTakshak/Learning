@@ -1,5 +1,9 @@
 const CSS = [
   {
+    title: "Better box Shadow",
+    url: "https://uglyduck.ca/better-box-shadows/",
+  },
+  {
     title: "10-best-css-loader-for-front-end-developers",
     url:
       "https://dev.to/gscode/10-best-css-loader-for-front-end-developers-jk8",

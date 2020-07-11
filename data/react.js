@@ -1,5 +1,20 @@
 const REACT = [
   {
+    title: "React: Under the Hood",
+    url: "https://medium.com/linebyline/react-under-the-hood-f715d1e91ac5",
+  },
+  {
+    title:
+      "A visual guide to React Mental models, part 2: useState, useEffect and lifecycles",
+    url:
+      "https://obedparla.com/code/a-visual-guide-to-react-mental-models-part-2-use-state-use-effect-and-lifecycles/",
+  },
+  {
+    title: "Complete guide to React rendering Behaviour",
+    url:
+      "https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/",
+  },
+  {
     title: "build-your-own-react",
     url: "https://pomb.us/build-your-own-react/",
   },

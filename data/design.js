@@ -1,5 +1,10 @@
 const DESIGN = [
   {
+    title: "A Quick guide to creating the design system",
+    url:
+      "https://medium.com/nextux/a-quick-guide-to-creating-a-design-system-7888e267171f",
+  },
+  {
     title: "growth.design/case-studies",
     url: "https://growth.design/case-studies/",
   },
