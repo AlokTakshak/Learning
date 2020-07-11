@@ -1,5 +1,9 @@
 const TYPESCRIPT = [
   {
+    title: "What's coming in TypeScript 4?",
+    url: "https://httptoolkit.tech/blog/whats-coming-in-typescript-4",
+  },
+  {
     title: "under-the-hood-of-type-systems",
     url:
       "https://medium.com/@tabu_craig/under-the-hood-of-type-systems-e-g-typescript-b3b0b5c18963",

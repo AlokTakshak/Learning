@@ -1,5 +1,24 @@
 const GENERAL = [
   {
+    title: "Basics of two-factor authentication with Bitwarden ",
+    url:
+      "https://bitwarden.com/blog/post/basics-of-two-factor-authentication-with-bitwarden/",
+  },
+  {
+    title: "Increment: FrontEnd",
+    url: "https://increment.com/",
+  },
+  {
+    title:
+      "Event Sourcing Part I: Understanding what it is core components and common misconceptions",
+    url:
+      "https://medium.com/ssense-tech/event-sourcing-part-i-understanding-what-it-is-core-components-and-common-misconceptions-5dec65f6d61",
+  },
+  {
+    title: "Git Internal Architecture",
+    url: "https://dev.to/anuj_bansal_/git-internal-architecture-o1j",
+  },
+  {
     title: "job-interview-at-google",
     url: "https://catonmat.net/my-job-interview-at-google",
   },

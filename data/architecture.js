@@ -1,5 +1,15 @@
 const ARCHITECTURE = [
   {
+    title: "Client-Side Architecture Basics ",
+    url:
+      "https://khalilstemmler.com/articles/client-side-architecture/introduction/",
+  },
+  {
+    title: "Getting started with Kubernetes Part I",
+    url:
+      "https://www.learncloudnative.com/blog/2020-05-26-getting-started-with-kubernetes-part-1/",
+  },
+  {
     title: "build-your-own-x",
     url: "https://github.com/danistefanovic/build-your-own-x",
   },
